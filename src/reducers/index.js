@@ -10,8 +10,8 @@ const reminder = (action) => {
 const reminders = (state = [], action) => {
   let reminders = null;
   switch(action.type) {
-    case ADD_REMINDER;
-      // array.duplicate.
+    case ADD_REMINDER:
+      // array.duplicate called spread operator in javascript.
       reminders = [...state, reminder(action)];
       console.log('reminders as state', reminders);
       return reminders;
