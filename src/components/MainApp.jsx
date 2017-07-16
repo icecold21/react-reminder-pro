@@ -21,8 +21,9 @@ class MainApp extends Component{
   }
 
   deleteReminder(id) {
-    console.log('deleting in application', id);
-    console.log('this.props', this.props);
+    // console.log('deleting in application', id);
+    // console.log('this.props', this.props);
+    this.props.deleteReminder(id);
   }
 
   renderReminders() {
