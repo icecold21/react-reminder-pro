@@ -10,13 +10,15 @@ class MainApp extends Component{
     super(props);
 
     this.state = {
-      text: ''
+      text: '',
+      dueDate: ''
     }
   }
 
   addReminder() {
     // see the function mapped to component.
-    this.props.addReminder(this.state.text);
+    console.log('this.state.dueDate', this.state.dueDate);
+    this.props.addReminder(this.state.text, this.state.dueDate);
     console.log('this.props', this.props);
   }
 
@@ -66,6 +68,12 @@ class MainApp extends Component{
               className='form-control'
               placeholder='I have to...'
               onChange={ event => this.setState({ text: event.target.value })}
+            />
+
+            <input
+              className="form-control"
+              type="datetime-local"
+              onChange={ event => this.setState({dueDate: event.target.value})}
             />
           </div>
           <button

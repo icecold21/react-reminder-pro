@@ -16,3 +16,16 @@
     "eject": "react-scripts eject"
   }
 }
+
+My Steps to tackle the project:
+1. Create the view. (approx 4 hour)
+2. Insert functionality to it.
+  - Implementing promise data (1-2 hours)
+  - Map the data from object to view (3-4 hours)
+  - URL & Linking (1-2 hours)
+  - Implement edit folders & documents(1-2 hours)
+  - Include client side form validation(1 hour)
+  - Inline Documentation (1 hours)
+
+I found this way is better because it's easy to get lost when learning new technology,
+So i'm creating the view first so i don't get lost doing it.
