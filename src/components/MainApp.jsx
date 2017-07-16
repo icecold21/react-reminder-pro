@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 // connect to the global state
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux'; long
-import { addReminder } from '../actions';
-import { deleteReminder } from '../actions';
+import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
 
 class MainApp extends Component{
@@ -89,6 +88,13 @@ class MainApp extends Component{
           <div className='col-md-12'>
             { this.renderReminders() }
           </div>
+
+          <div
+            className='btn btn-danger'
+            onClick={ () => this.props.clearReminders()}
+          >
+            Clear Reminders
+          </div>
         </div>
       </div>
     )
@@ -107,4 +113,4 @@ function mapStateToProps(state) {
 }
 
 // connect component to global state
-export default connect(mapStateToProps, { addReminder, deleteReminder }) (MainApp);
+export default connect(mapStateToProps, { addReminder, deleteReminder, clearReminders }) (MainApp);
