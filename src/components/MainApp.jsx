@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux'; long
 import { addReminder } from '../actions';
+import { deleteReminder } from '../actions';
 
 class MainApp extends Component{
   constructor(props) {
@@ -15,8 +16,39 @@ class MainApp extends Component{
 
   addReminder() {
     // see the function mapped to component.
-    console.log('this', this);
     this.props.addReminder(this.state.text);
+    console.log('this.props', this.props);
+  }
+
+  deleteReminder(id) {
+    console.log('deleting in application', id);
+    console.log('this.props', this.props);
+  }
+
+  renderReminders() {
+    console.log('hi im here', this.props.reminders);
+    const { reminders } = this.props;
+    return (
+      <ul className="list-group col-sm-12">
+        {
+          reminders.map(reminder => {
+            return (
+              <li key={ reminder.id } className="list-group-item">
+                <div className="list-item">
+                  <div>{reminder.text}</div>
+                </div>
+                <div
+                  className="list-item delete-button"
+                  onClick={() => this.deleteReminder(reminder.id)}
+                >
+                  &#x2715;
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
   }
 
   render() {
@@ -27,8 +59,8 @@ class MainApp extends Component{
           Reminder Pro
         </div>
 
-        <div className='font-inline'>
-          <div className='form-group'>
+        <div className='font-inline reminder-from'>
+          <div className='form-group col-md-12'>
             <input
               className='form-control'
               placeholder='I have to...'
@@ -37,10 +69,14 @@ class MainApp extends Component{
           </div>
           <button
             type="button"
-            className="btn btn-success"
+            className="btn btn-success col-md-12"
             onClick={() => this.addReminder()}>
             Add Reminder
           </button>
+          <br />
+          <div className='col-md-12'>
+            { this.renderReminders() }
+          </div>
         </div>
       </div>
     )
@@ -59,4 +95,4 @@ function mapStateToProps(state) {
 }
 
 // connect component to global state
-export default connect(null, { addReminder }) (MainApp);
+export default connect(mapStateToProps, { addReminder, deleteReminder }) (MainApp);
